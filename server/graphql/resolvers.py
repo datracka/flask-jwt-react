@@ -1,6 +1,8 @@
 import graphene
 import json
 from collections import namedtuple
+from server.services.google_jwt import GoogleJwt
+from server.graphql.types import User
 
 # stolen from https://stackoverflow.com/questions/6578986/how-to-convert-json-data-into-a-python-object/15882054#15882054
 
@@ -15,3 +17,8 @@ def json2obj(data):
 
 def hello_resolver(argument):
     return 'Hello ' + argument
+
+
+def sign_in_resolver():
+    token = GoogleJwt().sign_in()
+    return User(token=token)

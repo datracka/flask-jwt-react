@@ -3,12 +3,12 @@
 ## FIRST 
 
 - [DONE] Understand JWT http://polyglot.ninja/understanding-jwt-json-web-tokens/
-- Understand the role of flask-jwt-simple
-- Understand Google OIDC ttps://developers.google.com/identity/protocols/OpenIDConnect
+- [DONE PARTIALLY] Understand the role of flask-jwt-simple
+- [DONE PARTIALLY] Understand Google OIDC ttps://developers.google.com/identity/protocols/OpenIDConnect
 
 ## THEN (it can change when I get more understanding)
 
-- Create a JWT token using google OIDC as auth provider h
+- [DOING] Create a JWT token using google OIDC as auth provider in google_jwt.py using https://developers.google.com/identity/protocols/OpenIDConnect
 - Create an endpoint to trigger login
   - client routing (trigger a graphql request to the server)
   - server routing
