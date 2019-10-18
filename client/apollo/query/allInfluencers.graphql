@@ -1,0 +1,27 @@
+query allInfluencers(
+  $keywords: String!
+  $since: String!
+  $until: String!
+  $count: String!
+  $place: String
+  $radius: String
+  $popularity: String!
+) {
+  allInfluencers(
+    keywords: $keywords
+    since: $since
+    until: $until
+    count: $count
+    place: $place
+    radius: $radius
+    popularity: $popularity
+  ) {
+    screenName
+    degree
+    url
+    excerpt
+    createdAt
+    replyCount
+    retweetCount
+  }
+}

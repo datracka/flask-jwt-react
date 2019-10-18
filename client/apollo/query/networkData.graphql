@@ -1,0 +1,38 @@
+query networkData(
+  $keywords: String!
+  $since: String!
+  $until: String!
+  $count: String!
+  $place: String
+  $radius: String
+  $popularity: String!
+) {
+  networkData(
+    keywords: $keywords
+    since: $since
+    until: $until
+    count: $count
+    place: $place
+    radius: $radius
+    popularity: $popularity
+  ) {
+    nodes {
+      nodeId
+      screenName
+      createdAt
+      degree
+      radius
+      replyCount
+      retweetCount
+      text
+      url
+      createdAt
+    }
+    links {
+      source
+      target
+      betweenness
+      betweennessWeighted
+    }
+  }
+}

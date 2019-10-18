@@ -1,0 +1,10 @@
+query getPlaces($place: String!) {
+  places(place: $place) {
+    description
+    placeId
+    terms {
+      lentgh
+      value
+    }
+  }
+}
