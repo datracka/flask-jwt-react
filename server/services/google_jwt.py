@@ -53,4 +53,5 @@ class GoogleJwt:
         except requests.exceptions.RequestException as e:
             print('error', e)
 
+        # does not work comming from a graphql of course
         redirect(response)
