@@ -11,7 +11,7 @@
     "watch": "webpack --mode development --progress --watch",
     "build:dev": "NODE_ENV=development webpack --mode development",
     "build:prod": "NODE_ENV=production webpack --mode production",
-    "serve": "export FLASK_ENV=development && flask run",
+    "serve": "export FLASK_ENV=development && flask run --cert=cert.pem --key=key.pem",
     "dev": "webpack-dev-server --inline --color --compress",
     "heroku-postbuild": "webpack --mode production",
     "flow": "flow",

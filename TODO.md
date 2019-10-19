@@ -8,7 +8,11 @@
 
 ## THEN (it can change when I get more understanding)
 
-- [DOING] Create a JWT token using google OIDC as auth provider in google_jwt.py using https://developers.google.com/identity/protocols/OpenIDConnect
+- [DOING] ADD SSL
+- [NEXT] Create a JWT token using google OIDC as auth provider in google_jwt.py using https://developers.google.com/identity/protocols/OpenIDConnect.
+  >> Issue: redirect URL, check what example is doing on the callback 
+  >> and then how to reproduce it... google will redirect us there anyways!
+  
 - Create an endpoint to trigger login
   - client routing (trigger a graphql request to the server)
   - server routing

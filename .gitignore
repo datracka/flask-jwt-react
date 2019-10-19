@@ -12,3 +12,5 @@ stats.json
 server/static/main.js.map
 server/static/vendors~main.js.map
 credentials.json
+cert.pem
+key.pem
