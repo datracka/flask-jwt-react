@@ -1,7 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import { getSignInPagePath } from "paths";
+import { getSignInPagePath, getTestPath } from "paths";
 import SignInPage from "./sign-in-page";
+import TestPage from "./test-page";
 
 export default () => {
   return (
@@ -11,6 +12,7 @@ export default () => {
         exact
         component={SignInPage}
       />
+      <Route path={getTestPath()} exact component={TestPage} />
     </Router>
   );
 };

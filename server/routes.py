@@ -5,5 +5,6 @@ blueprint = Blueprint('main', __name__)
 
 # https://github.com/shea256/angular-flask/
 @blueprint.route('/')
+@blueprint.route('/test')
 def basic_pages(**kwargs):
     return render_template('index.html')
