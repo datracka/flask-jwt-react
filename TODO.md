@@ -17,6 +17,7 @@
     - no params
     - It creates jwt token by calling google auth
     - payload google JWT TOKEN 
+    - IMPORTANT!! -> Redirect URL how we manage it?
     - client side store token in local storage
     - redirect to protected route /network-graph (clientside protected route verify token is created in local storage)
   -  All subsequents graphQL request will have JWT as header

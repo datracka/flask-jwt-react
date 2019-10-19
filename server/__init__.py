@@ -12,6 +12,7 @@ from server.graphql.mutation import Mutation
 
 def create_app():
     app = Flask(__name__, static_url_path='')
+    app.secret_key = os.environ.get("SECRET_KEY") or os.urandom(24)
     @app.before_request
     def before_request():
         if not request.is_secure and app.env != "development":

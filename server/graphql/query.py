@@ -2,7 +2,7 @@
 import graphene
 
 from server.graphql.types import User
-from server.graphql.resolvers import hello_resolver
+from server.graphql.resolvers import hello_resolver, sign_in_resolver
 
 
 class Query(graphene.ObjectType):

@@ -14,7 +14,9 @@ pylint = "*"
 python-dotenv = "*"
 python-dateutil = "*"
 graphene = "*"
-
+requests = "*"
+oauthlib = "*"
+pyopenssl = "*"
 
 [requires]
 python_version = "3.7"

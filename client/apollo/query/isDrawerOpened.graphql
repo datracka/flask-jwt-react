@@ -1,3 +1,0 @@
-query isDrawerOpened {
-  isDrawerOpened @client
-}
