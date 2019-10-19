@@ -9,13 +9,11 @@
 ## THEN (it can change when I get more understanding)
 
 - [DONE] ADD SSL
-- [DOING] Create a JWT token using google OIDC as auth provider in google_jwt.py using https://developers.google.com/identity/protocols/OpenIDConnect. I AM IN STEP 2 (see gloogle_jwt.py)
+- [DOING] Create a JWT token using google OIDC as auth provider in google_jwt.py using https://developers.google.com/identity/protocols/OpenIDConnect.
 
->> Current Status: I do the request in step 2 and the result is a Page to be shown.
->> But I am in an AJAX (graphql) query!! I can not redirect coming 
->> from this kind of request...
->> Solution 1: Trigger can be a proper server path /login
->> Solution 2: No se me ocurre :D :D (I think everything will have to have server side driven....)
+>> Current Status: Step 3. Initial Auth request is done. Google Auth screen popups and redirect to login/callback. 
+>> NEXT login/callback route should delegate in google_jwt.callback() method and vcalidate do steps 3 and 4.
+>> PROBLEM: I don't know how to get query string parameters returned by google. Maybe blueprint is not the best solution. --> https://localhost:5000/login/callback?code=4/sQGx35giptXmLzr6l5RjntR5if2NtTP9bI4FC4DxJl9DnOftqXl0zHc_u34BFxfu39if5hCdmrpCUO96kdJpOWI&scope=email+profile+openid+https://www.googleapis.com/auth/userinfo.email+https://www.googleapis.com/auth/userinfo.profile&authuser=0&session_state=6d09768b063cbfc7fec046c189362e24d7c0bc1f..bfc6&prompt=consent 
   
 - Create an endpoint to trigger login
   - client routing (trigger a graphql request to the server)

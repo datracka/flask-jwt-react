@@ -1,5 +1,4 @@
 from oauthlib.oauth2 import WebApplicationClient
-from flask import redirect
 import os
 import time
 import json
@@ -27,7 +26,7 @@ class GoogleJwt:
     def get_google_provider_cfg(self):
         return requests.get(os.getenv('GOOGLE_DISCOVERY_URL')).json()
 
-    def sign_in(self):
+    def login(self):
         google_provider_cfg = self.get_google_provider_cfg()
         authorization_endpoint = google_provider_cfg["authorization_endpoint"]
 
@@ -35,7 +34,7 @@ class GoogleJwt:
         # scopes that let you retrieve user's profile from Google
         request_uri = self.client.prepare_request_uri(
             authorization_endpoint,
-            redirect_uri='https://localhost:5000/callback',  # should not be hardcoded
+            redirect_uri='https://localhost:5000/login/callback',  # should not be hardcoded
             scope=["openid", "email", "profile"],
         )
         # step 2 https://developers.google.com/identity/protocols/OpenIDConnect#sendauthrequest
@@ -47,11 +46,8 @@ class GoogleJwt:
         # state = self.state
         # nonce = self.nonce
         # login_hint = '12345689' # is (subject) claim
-        print(request_uri)
         try:
             response = requests.get(request_uri)
         except requests.exceptions.RequestException as e:
             print('error', e)
-
-        # does not work comming from a graphql of course
-        redirect(response)
+        return response
