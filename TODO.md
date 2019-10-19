@@ -10,6 +10,7 @@
 
 - [DONE] ADD SSL
 - [DOING] Create a JWT token using google OIDC as auth provider in google_jwt.py using https://developers.google.com/identity/protocols/OpenIDConnect.
+- what means this: https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id=940491102431-u598da1eenhcsj63ls27dfr0kfic0atj.apps.googleusercontent.com&redirect_uri=https%3A%2F%2Flocalhost%2Fcallback&scope=openid+email+profile and what is the relation with REST auth?
   >> Issue: redirect URL, check what example is doing on the callback 
   >> and then how to reproduce it... google will redirect us there anyways!
   
