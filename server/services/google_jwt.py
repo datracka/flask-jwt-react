@@ -13,23 +13,25 @@ import requests
 
 
 class GoogleJwt:
-    def __init(self):
+    client = None
+
+    def __init__(self):
         self.client = WebApplicationClient(os.getenv('GOOGLE_CLIENT_ID'))
+        print('###', self.client)
 
     def get_google_provider_cfg(self):
         return requests.get(os.getenv('GOOGLE_DISCOVERY_URL')).json()
 
     def sign_in(self):
         google_provider_cfg = self.get_google_provider_cfg()
-        print('#', google_provider_cfg)
-        # authorization_endpoint = google_provider_cfg["authorization_endpoint"]
+        authorization_endpoint = google_provider_cfg["authorization_endpoint"]
 
         # Use library to construct the request for Google login and provide
         # scopes that let you retrieve user's profile from Google
-        # request_uri = client.prepare_request_uri(
-        #   authorization_endpoint,
-        #    redirect_uri='redirect URL',
-        #    scope=["openid", "email", "profile"],
-        # )
-        # return redirect(request_uri)
-        return 'XXXX'
+        request_uri = self.client.prepare_request_uri(
+            authorization_endpoint,
+            redirect_uri='https://localhost/callback',
+            scope=["openid", "email", "profile"],
+        )
+        print('#', request_uri)
+        return 'YXYXYXY'

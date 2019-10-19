@@ -8,8 +8,8 @@
 
 ## THEN (it can change when I get more understanding)
 
-- [DOING] ADD SSL
-- [NEXT] Create a JWT token using google OIDC as auth provider in google_jwt.py using https://developers.google.com/identity/protocols/OpenIDConnect.
+- [DONE] ADD SSL
+- [DOING] Create a JWT token using google OIDC as auth provider in google_jwt.py using https://developers.google.com/identity/protocols/OpenIDConnect.
   >> Issue: redirect URL, check what example is doing on the callback 
   >> and then how to reproduce it... google will redirect us there anyways!
   

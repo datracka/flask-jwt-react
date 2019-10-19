@@ -20,5 +20,6 @@ def hello_resolver(argument):
 
 
 def sign_in_resolver():
-    token = GoogleJwt().sign_in()
+    google_jwt = GoogleJwt()
+    token = google_jwt.sign_in()
     return User(token=token)
