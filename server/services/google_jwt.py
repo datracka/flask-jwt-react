@@ -3,7 +3,6 @@ import os
 import time
 import json
 import requests
-import hashlib
 
 
 # https://developers.google.com/identity/protocols/OpenIDConnect
@@ -15,26 +14,21 @@ import hashlib
 
 class GoogleJwt:
     client = None
-    state = None
-    nonce = None
+    nonce = None  # not used
 
     def __init__(self):
         self.client = WebApplicationClient(os.getenv('GOOGLE_CLIENT_ID'))
-        self.state = hashlib.sha256(os.urandom(1024)).hexdigest()
+        self.discovery = requests.get(os.getenv('GOOGLE_DISCOVERY_URL')).json()
         self.nonce = os.urandom(24)
 
-    def get_google_provider_cfg(self):
-        return requests.get(os.getenv('GOOGLE_DISCOVERY_URL')).json()
-
-    def login(self):
-        google_provider_cfg = self.get_google_provider_cfg()
-        authorization_endpoint = google_provider_cfg["authorization_endpoint"]
-
+    def login(self, url, state):
+        authorization_endpoint = self.discovery["authorization_endpoint"]
         # Use library to construct the request for Google login and provide
         # scopes that let you retrieve user's profile from Google
         request_uri = self.client.prepare_request_uri(
             authorization_endpoint,
-            redirect_uri='https://localhost:5000/login/callback',  # should not be hardcoded
+            redirect_uri=f'{url}/callback',  # should not be hardcoded
+            state=state,
             scope=["openid", "email", "profile"],
         )
         # step 2 https://developers.google.com/identity/protocols/OpenIDConnect#sendauthrequest
@@ -51,3 +45,27 @@ class GoogleJwt:
         except requests.exceptions.RequestException as e:
             print('error', e)
         return response
+
+    def callback(self, url, base_url, args):
+        code = args.get('code')
+        token_endpoint = self.discovery["token_endpoint"]
+        token_url, headers, body = self.client.prepare_token_request(token_endpoint,
+                                                                     code=code,
+                                                                     authorization_response=url,
+                                                                     redirect_url=base_url)
+        token_response = requests.post(
+            token_url,
+            headers=headers,
+            data=body,
+            auth=('940491102431-u598da1eenhcsj63ls27dfr0kfic0atj.apps.googleusercontent.com',
+                  'ExARNcK474YF9OuYtybZ_-wS')
+        )
+        print('######')
+        print(json.dumps(token_response.json()))
+        print('######')
+        # try:
+        #     response = requests.get(token_uri)
+        # except requests.exceptions.RequestException as e:
+        #     print('error', e)
+        # return response['id_token']
+        return 'XZXXZXZ'

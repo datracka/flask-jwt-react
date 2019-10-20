@@ -367,6 +367,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var TestPage = function TestPage() {
   var history = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["useHistory"])();
+  console.log(history);
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Test Page");
 };
 

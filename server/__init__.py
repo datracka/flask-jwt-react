@@ -1,18 +1,20 @@
 import os
 import json
 import graphene
-from flask import Flask, render_template, request, redirect, send_from_directory
+import hashlib
+from flask import Flask, render_template, request, redirect, send_from_directory, make_response, session
 from flask.helpers import get_root_path
 from flask_graphql import GraphQLView
 from config import BaseConfig
-from server import routes
 from server.graphql.query import Query
 from server.graphql.mutation import Mutation
+from server.services.google_jwt import GoogleJwt
 
 
 def create_app():
     app = Flask(__name__, static_url_path='')
     app.secret_key = os.environ.get("SECRET_KEY") or os.urandom(24)
+
     @app.before_request
     def before_request():
         if not request.is_secure and app.env != "development":
@@ -20,11 +22,38 @@ def create_app():
             code = 301
             return redirect(url, code=code)
 
+    ###### routes ###########
+
     @app.route('/favicon.ico')
     def favicon():
         return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
-    dirname = os.path.dirname(__file__)
+    @app.route('/')
+    @app.route('/test')
+    def client_pages(**kwargs):
+        return render_template('index.html')
+
+    @app.route('/login')
+    def login():
+        session['state'] = hashlib.sha256(os.urandom(1024)).hexdigest()
+        google_jwt = GoogleJwt()
+        response = google_jwt.login(request.base_url, session['state'])
+        return response.text
+
+    @app.route('/login/callback')
+    def callback():
+        if request.args.get('state', '') != session['state']:
+            return 'Invalid state parameter.'
+            response = make_response(json.dumps(
+                'Invalid state parameter.'), 401)
+            response.headers['Content-Type'] = 'application/json'
+            return response
+        google_jwt = GoogleJwt()
+        token_id = google_jwt.callback(
+            request.url, request.base_url, request.args)
+        return redirect('/test')
+
+    ###### end routes #######
 
     # add configuration
     if os.getenv('FLASK_ENV') == 'development':
@@ -48,5 +77,4 @@ def create_app():
                      "content": "width=device-width, initial-scale=1, shrink-to-fit=no"}
 
     # add routes
-    app.register_blueprint(routes.blueprint)
     return app

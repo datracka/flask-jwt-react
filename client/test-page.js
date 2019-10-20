@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 
 const TestPage = () => {
   const history = useHistory();
+  console.log(history);
   return <div>Test Page</div>;
 };
 
