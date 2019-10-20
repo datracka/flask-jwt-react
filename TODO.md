@@ -9,11 +9,17 @@
 ## THEN (it can change when I get more understanding)
 
 - [DONE] ADD SSL
-- [DOING] Create a JWT token using google OIDC as auth provider in google_jwt.py using https://developers.google.com/identity/protocols/OpenIDConnect.
+- [DONE] Create a JWT token using google OIDC as auth provider in google_jwt.py using https://developers.google.com/identity/protocols/OpenIDConnect.
+- [DOING] Client flow logic
+>> after having token in client side, what do we do?
+>> redirect to root '/'
+>> root checks if token in URL or localstorage
+>> if so -> redirect to private routes
+>> else -> shows login button
+>> private routes check always if local storage
 
->> Current Status: Step 3. Initial Auth request is done. Google Auth screen popups and redirect to login/callback. 
->> NEXT login/callback route should delegate in google_jwt.callback() method and vcalidate do steps 3 and 4 
-  
+
+
 ## Google id token validation
 
 - https://stackoverflow.com/questions/39061310/validate-google-id-token
@@ -30,7 +36,6 @@
     - no params
     - It creates jwt token by calling google auth
     - payload google JWT TOKEN 
-    - IMPORTANT!! -> Redirect URL how we manage it?
     - client side store token in local storage
     - redirect to protected route /network-graph (clientside protected route verify token is created in local storage)
   -  All subsequents graphQL request will have JWT as header
