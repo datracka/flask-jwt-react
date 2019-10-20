@@ -17,6 +17,7 @@
 >> if so -> redirect to private routes
 >> else -> shows login button
 >> private routes check always if local storage
+- Add DB support? (optional)
 
 
 
