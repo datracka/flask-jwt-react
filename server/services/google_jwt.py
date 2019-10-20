@@ -57,8 +57,8 @@ class GoogleJwt:
             token_url,
             headers=headers,
             data=body,
-            auth=('940491102431-u598da1eenhcsj63ls27dfr0kfic0atj.apps.googleusercontent.com',
-                  'ExARNcK474YF9OuYtybZ_-wS')
+            auth=(os.getenv('GOOGLE_CLIENT_ID'),
+                  os.getenv('GOOGLE_CLIENT_SECRET'))
         )
         print('######')
         print(json.dumps(token_response.json()))
