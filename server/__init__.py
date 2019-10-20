@@ -49,9 +49,9 @@ def create_app():
             response.headers['Content-Type'] = 'application/json'
             return response
         google_jwt = GoogleJwt()
-        token_id = google_jwt.callback(
+        jwt_token = google_jwt.callback(
             request.url, request.base_url, request.args)
-        return redirect('/test')
+        return redirect('/test?token=' + jwt_token)
 
     ###### end routes #######
 

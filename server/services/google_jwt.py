@@ -3,6 +3,7 @@ import os
 import time
 import json
 import requests
+from google.auth import jwt
 
 
 # https://developers.google.com/identity/protocols/OpenIDConnect
@@ -53,19 +54,16 @@ class GoogleJwt:
                                                                      code=code,
                                                                      authorization_response=url,
                                                                      redirect_url=base_url)
-        token_response = requests.post(
-            token_url,
-            headers=headers,
-            data=body,
-            auth=(os.getenv('GOOGLE_CLIENT_ID'),
-                  os.getenv('GOOGLE_CLIENT_SECRET'))
-        )
-        print('######')
-        print(json.dumps(token_response.json()))
-        print('######')
-        # try:
-        #     response = requests.get(token_uri)
-        # except requests.exceptions.RequestException as e:
-        #     print('error', e)
-        # return response['id_token']
-        return 'XZXXZXZ'
+        try:
+            token_response = requests.post(
+                token_url,
+                headers=headers,
+                data=body,
+                auth=(os.getenv('GOOGLE_CLIENT_ID'),
+                      os.getenv('GOOGLE_CLIENT_SECRET'))
+            )
+        except requests.exceptions.RequestException as e:
+            print('error', e)
+        tokens_json = token_response.json()
+        # jwt.decode(tokens_json['id_token'], verify=False)
+        return tokens_json['id_token']

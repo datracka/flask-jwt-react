@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "e5c0bb93a78104fc510c8bc27ce9002f8f7edaf9cc874dcdbbdeb1f2e713285b"
+            "sha256": "5cfa8d97f4a564b57c0f0c8788248852a277fa791a4f31581c0d7076fe8eeae2"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -29,6 +29,13 @@
                 "sha256:5a79c9b4bd6c4be777424593f957c996e20beb5f74e0bc332f47713c6f675efe"
             ],
             "version": "==2.3.2"
+        },
+        "cachetools": {
+            "hashes": [
+                "sha256:428266a1c0d36dc5aca63a2d7c5942e88c2c898d72139fca0e97fdd2380517ae",
+                "sha256:8ea2d3ce97850f31e4a08b0e2b5e6c34997d7216a9d2c98e0f3978630d4da69a"
+            ],
+            "version": "==3.1.1"
         },
         "certifi": {
             "hashes": [
@@ -128,6 +135,14 @@
             ],
             "index": "pypi",
             "version": "==2.0.0"
+        },
+        "google-auth": {
+            "hashes": [
+                "sha256:0f7c6a64927d34c1a474da92cfc59e552a5d3b940d3266606c6a28b72888b9e4",
+                "sha256:20705f6803fd2c4d1cc2dcb0df09d4dfcb9a7d51fd59e94a3a28231fd93119ed"
+            ],
+            "index": "pypi",
+            "version": "==1.6.3"
         },
         "graphene": {
             "hashes": [
@@ -272,6 +287,20 @@
             ],
             "version": "==2.2.1"
         },
+        "pyasn1": {
+            "hashes": [
+                "sha256:62cdade8b5530f0b185e09855dd422bc05c0bbff6b72ff61381c09dac7befd8c",
+                "sha256:a9495356ca1d66ed197a0f72b41eb1823cf7ea8b5bd07191673e8147aecf8604"
+            ],
+            "version": "==0.4.7"
+        },
+        "pyasn1-modules": {
+            "hashes": [
+                "sha256:0c35a52e00b672f832e5846826f1fb7507907f7d52fba6faa9e3c4cbe874fe4b",
+                "sha256:b6ada4f840fe51abf5a6bd545b45bf537bea62221fa0dde2e8a553ed9f06a4e3"
+            ],
+            "version": "==0.2.7"
+        },
         "pycparser": {
             "hashes": [
                 "sha256:a988718abfad80b6b157acce7bf130a30876d27603738ac39f140993246b25b3"
@@ -317,6 +346,13 @@
             ],
             "index": "pypi",
             "version": "==2.22.0"
+        },
+        "rsa": {
+            "hashes": [
+                "sha256:14ba45700ff1ec9eeb206a2ce76b32814958a98e372006c8fb76ba820211be66",
+                "sha256:1a836406405730121ae9823e19c6e806c62bbad73f890574fff50efa4122c487"
+            ],
+            "version": "==4.0"
         },
         "rx": {
             "hashes": [
