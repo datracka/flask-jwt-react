@@ -305,6 +305,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var _paths__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./paths */ "./client/paths.js");
+/* harmony import */ var _utils_local_storage__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./utils/local-storage */ "./client/utils/local-storage.js");
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
@@ -324,10 +325,15 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 
 
 
+
+
 var PrivateRoute = function PrivateRoute(_ref) {
   var Component = _ref.component,
       history = _ref.history,
-      props = _objectWithoutProperties(_ref, ["component", "history"]);
+      path = _ref.path,
+      props = _objectWithoutProperties(_ref, ["component", "history", "path"]);
+
+  var location = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["useLocation"])();
 
   var _React$useState = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState(false),
       _React$useState2 = _slicedToArray(_React$useState, 2),
@@ -335,12 +341,17 @@ var PrivateRoute = function PrivateRoute(_ref) {
       setAllowRender = _React$useState2[1];
 
   react__WEBPACK_IMPORTED_MODULE_0___default.a.useEffect(function () {
-    if (true) {// nothing
+    var token = Object(_utils_local_storage__WEBPACK_IMPORTED_MODULE_4__["getFromLocalStorage"])(_utils_local_storage__WEBPACK_IMPORTED_MODULE_4__["TOKEN_KEY"]);
+
+    if (!token && location.pathname === path) {
+      window.location.href = Object(_paths__WEBPACK_IMPORTED_MODULE_3__["getSignInPagePath"])();
     }
 
     setAllowRender(true);
   }, []);
   return allowRender ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], _extends({}, props, {
+    path: path,
+    exact: true,
     component: Component
   })) : null;
 };
@@ -367,7 +378,9 @@ __webpack_require__.r(__webpack_exports__);
 var ProtectedPage = function ProtectedPage() {
   var history = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["useHistory"])();
   console.log(history);
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Test Page");
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Protected Page"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "#"
+  }, "click to query")));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (ProtectedPage);
@@ -436,12 +449,12 @@ var SignInPage = function SignInPage() {
   react__WEBPACK_IMPORTED_MODULE_0___default.a.useEffect(function () {
     var params = Object(_utils_query_string_helpers__WEBPACK_IMPORTED_MODULE_2__["toObject"])(location.search);
     var token = Object(_utils_local_storage__WEBPACK_IMPORTED_MODULE_3__["getFromLocalStorage"])(_utils_local_storage__WEBPACK_IMPORTED_MODULE_3__["TOKEN_KEY"]);
+    console.log(params.token || token);
 
     if (params.token || token) {
-      Object(_utils_local_storage__WEBPACK_IMPORTED_MODULE_3__["saveInLocalStorage"])(_utils_local_storage__WEBPACK_IMPORTED_MODULE_3__["TOKEN_KEY"], params.token);
-      window.location.href = Object(_paths__WEBPACK_IMPORTED_MODULE_4__["getProtectedPagePath"])();
+      Object(_utils_local_storage__WEBPACK_IMPORTED_MODULE_3__["saveInLocalStorage"])(_utils_local_storage__WEBPACK_IMPORTED_MODULE_3__["TOKEN_KEY"], params.token); // window.location.href = getProtectedPagePath();
     }
-  });
+  }, []);
 
   var onClick = function onClick() {
     window.location.href = Object(_paths__WEBPACK_IMPORTED_MODULE_4__["getSignInPagePath"])();
