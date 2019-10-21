@@ -1,2 +1,2 @@
 export const getSignInPagePath = () => "/";
-export const getTestPath = () => "/test";
+export const getProtectedPagePath = () => "/protected";

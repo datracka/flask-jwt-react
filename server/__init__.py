@@ -29,7 +29,7 @@ def create_app():
         return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
     @app.route('/')
-    @app.route('/test')
+    @app.route('/protected')
     def client_pages(**kwargs):
         return render_template('index.html')
 
@@ -51,7 +51,7 @@ def create_app():
         google_jwt = GoogleJwt()
         jwt_token = google_jwt.callback(
             request.url, request.base_url, request.args)
-        return redirect('/test?token=' + jwt_token)
+        return redirect('/?token=' + jwt_token)
 
     ###### end routes #######
 

@@ -1,8 +1,9 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import { getSignInPagePath, getTestPath } from "paths";
+import { getSignInPagePath, getProtectedPagePath } from "paths";
 import SignInPage from "./sign-in-page";
-import TestPage from "./test-page";
+import ProtectedPage from "./protected-page";
+import PrivateRoute from "./private-route";
 
 export default () => {
   return (
@@ -12,7 +13,11 @@ export default () => {
         exact
         component={SignInPage}
       />
-      <Route path={getTestPath()} exact component={TestPage} />
+      <PrivateRoute
+        path={getProtectedPagePath()}
+        exact
+        component={ProtectedPage}
+      />
     </Router>
   );
 };

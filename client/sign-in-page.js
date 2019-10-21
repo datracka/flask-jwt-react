@@ -1,7 +1,26 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
+import { toObject } from "utils/query-string-helpers";
+import {
+  TOKEN_KEY,
+  saveInLocalStorage,
+  getFromLocalStorage,
+} from "utils/local-storage";
+import { getProtectedPagePath, getSignInPagePath } from "paths";
 
 const SignInPage = () => {
-  const onClick = () => {};
+  const location = useLocation();
+  React.useEffect(() => {
+    const params = toObject(location.search);
+    const token = getFromLocalStorage(TOKEN_KEY);
+    if (params.token || token) {
+      saveInLocalStorage(TOKEN_KEY, params.token);
+      window.location.href = getProtectedPagePath();
+    }
+  });
+  const onClick = () => {
+    window.location.href = getSignInPagePath();
+  };
   return (
     <React.Fragment>
       <button onClick={onClick}>
