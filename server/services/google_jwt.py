@@ -5,7 +5,6 @@ import time
 import json
 import requests
 from google.auth import jwt
-# from server.models import User
 
 # https://developers.google.com/identity/protocols/OpenIDConnect
 

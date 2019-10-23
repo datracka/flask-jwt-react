@@ -1,5 +1,4 @@
-from server import create_app
+from server import app
 
-server = create_app()
 if __name__ == '__main__':
-    server.run()
+    app.run()
