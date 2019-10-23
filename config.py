@@ -1,10 +1,15 @@
 # http://flask.pocoo.org/docs/1.0/config/
+import os
+
+
 class BaseConfig(object):
     '''
     Base config class
     '''
     DEBUG = True
     TESTING = False
+    FLASK_ENV = "development"
+    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL')
 
 
 class ProductionConfig(BaseConfig):
@@ -12,6 +17,7 @@ class ProductionConfig(BaseConfig):
     Production specific config
     '''
     DEBUG = False
+    FLASK_ENV = "production"
 
 
 class DevelopmentConfig(BaseConfig):
@@ -20,3 +26,4 @@ class DevelopmentConfig(BaseConfig):
     '''
     DEBUG = True
     TESTING = True
+    FLASK_ENV = "development"

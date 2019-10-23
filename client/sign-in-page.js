@@ -6,21 +6,26 @@ import {
   saveInLocalStorage,
   getFromLocalStorage,
 } from "utils/local-storage";
-import { getProtectedPagePath, getSignInPagePath } from "paths";
+import {
+  getProtectedPagePath,
+  getLoginAction,
+  getSignInPagePath,
+} from "paths";
 
 const SignInPage = () => {
   const location = useLocation();
   React.useEffect(() => {
     const params = toObject(location.search);
     const token = getFromLocalStorage(TOKEN_KEY);
-    console.log(params.token || token);
+    console.log("token: ", params.token || token);
     if (params.token || token) {
       saveInLocalStorage(TOKEN_KEY, params.token);
       // window.location.href = getProtectedPagePath();
     }
   }, []);
   const onClick = () => {
-    window.location.href = getSignInPagePath();
+    console.log("login", getLoginAction());
+    window.location.href = getLoginAction();
   };
   return (
     <React.Fragment>

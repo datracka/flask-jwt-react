@@ -275,15 +275,19 @@ react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_
 /*!*************************!*\
   !*** ./client/paths.js ***!
   \*************************/
-/*! exports provided: getSignInPagePath, getProtectedPagePath */
+/*! exports provided: getSignInPagePath, getLoginAction, getProtectedPagePath */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getSignInPagePath", function() { return getSignInPagePath; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getLoginAction", function() { return getLoginAction; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getProtectedPagePath", function() { return getProtectedPagePath; });
 var getSignInPagePath = function getSignInPagePath() {
   return "/";
+};
+var getLoginAction = function getLoginAction() {
+  return "/login";
 };
 var getProtectedPagePath = function getProtectedPagePath() {
   return "/protected";
@@ -449,7 +453,7 @@ var SignInPage = function SignInPage() {
   react__WEBPACK_IMPORTED_MODULE_0___default.a.useEffect(function () {
     var params = Object(_utils_query_string_helpers__WEBPACK_IMPORTED_MODULE_2__["toObject"])(location.search);
     var token = Object(_utils_local_storage__WEBPACK_IMPORTED_MODULE_3__["getFromLocalStorage"])(_utils_local_storage__WEBPACK_IMPORTED_MODULE_3__["TOKEN_KEY"]);
-    console.log(params.token || token);
+    console.log("token: ", params.token || token);
 
     if (params.token || token) {
       Object(_utils_local_storage__WEBPACK_IMPORTED_MODULE_3__["saveInLocalStorage"])(_utils_local_storage__WEBPACK_IMPORTED_MODULE_3__["TOKEN_KEY"], params.token); // window.location.href = getProtectedPagePath();
@@ -457,7 +461,8 @@ var SignInPage = function SignInPage() {
   }, []);
 
   var onClick = function onClick() {
-    window.location.href = Object(_paths__WEBPACK_IMPORTED_MODULE_4__["getSignInPagePath"])();
+    console.log("login", Object(_paths__WEBPACK_IMPORTED_MODULE_4__["getLoginAction"])());
+    window.location.href = Object(_paths__WEBPACK_IMPORTED_MODULE_4__["getLoginAction"])();
   };
 
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
