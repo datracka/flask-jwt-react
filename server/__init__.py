@@ -81,4 +81,4 @@ def create_app():
                      "content": "width=device-width, initial-scale=1, shrink-to-fit=no"}
 
     # add routes
-    return app
+    return app, db

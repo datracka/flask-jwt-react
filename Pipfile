@@ -21,6 +21,7 @@ google-auth = "*"
 requests = "*"
 oauthlib = "*"
 psycopg2 = "==2.7.*"
+flask-script = "*"
 
 [requires]
 python_version = "3.7"

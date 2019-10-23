@@ -1,6 +1,7 @@
 
-from server import db
-print(db)
+from server import create_app
+
+db = create_app()
 
 
 class User(db.Model):
