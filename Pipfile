@@ -20,8 +20,8 @@ flask-migrate = "*"
 google-auth = "*"
 requests = "*"
 oauthlib = "*"
-psycopg2 = "==2.7.*"
 flask-script = "*"
+psycopg2-binary = "*"
 
 [requires]
 python_version = "3.7"

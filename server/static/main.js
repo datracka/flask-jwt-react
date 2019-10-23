@@ -330,7 +330,6 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 
 
 
-
 var PrivateRoute = function PrivateRoute(_ref) {
   var Component = _ref.component,
       history = _ref.history,
@@ -453,7 +452,6 @@ var SignInPage = function SignInPage() {
   react__WEBPACK_IMPORTED_MODULE_0___default.a.useEffect(function () {
     var params = Object(_utils_query_string_helpers__WEBPACK_IMPORTED_MODULE_2__["toObject"])(location.search);
     var token = Object(_utils_local_storage__WEBPACK_IMPORTED_MODULE_3__["getFromLocalStorage"])(_utils_local_storage__WEBPACK_IMPORTED_MODULE_3__["TOKEN_KEY"]);
-    console.log("token: ", params.token || token);
 
     if (params.token || token) {
       Object(_utils_local_storage__WEBPACK_IMPORTED_MODULE_3__["saveInLocalStorage"])(_utils_local_storage__WEBPACK_IMPORTED_MODULE_3__["TOKEN_KEY"], params.token); // window.location.href = getProtectedPagePath();

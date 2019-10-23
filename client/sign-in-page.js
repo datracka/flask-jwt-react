@@ -17,7 +17,6 @@ const SignInPage = () => {
   React.useEffect(() => {
     const params = toObject(location.search);
     const token = getFromLocalStorage(TOKEN_KEY);
-    console.log("token: ", params.token || token);
     if (params.token || token) {
       saveInLocalStorage(TOKEN_KEY, params.token);
       // window.location.href = getProtectedPagePath();

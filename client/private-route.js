@@ -1,7 +1,6 @@
 import React from "react";
-import { Route } from "react-router-dom";
+import { Route, useLocation } from "react-router-dom";
 import { withRouter } from "react-router";
-import { useLocation } from "react-router-dom";
 import { getSignInPagePath } from "paths";
 import { TOKEN_KEY, getFromLocalStorage } from "utils/local-storage";
 
