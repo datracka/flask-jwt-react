@@ -9,7 +9,8 @@ class BaseConfig(object):
     DEBUG = True
     TESTING = False
     FLASK_ENV = "development"
-    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL')
+    SQLALCHEMY_DATABASE_URI = os.getenv('SQLALCHEMY_DATABASE_URI')
+    SQLALCHEMY_TRACK_MODIFICATIONS = 1
 
 
 class ProductionConfig(BaseConfig):

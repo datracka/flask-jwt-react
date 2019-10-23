@@ -9,6 +9,8 @@ from config import BaseConfig
 from server.graphql.query import Query
 from server.graphql.mutation import Mutation
 from server.services.google_jwt import GoogleJwt
+from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 
 
 def create_app():
@@ -67,8 +69,10 @@ def create_app():
     app.add_url_rule(
         '/graphql', view_func=GraphQLView.as_view('graphql', schema=schema, graphiql=os.environ["FLASK_ENV"] != 'production'))
 
-    introspection_dict = schema.introspect()
+    db = SQLAlchemy(app)
+    migrate = Migrate(app, db)
 
+    # introspection_dict = schema.introspect()
     # Print the schema in the console
     # print(json.dumps(introspection_dict))
 

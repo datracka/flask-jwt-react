@@ -5,7 +5,7 @@ node_modules
 .env
 __pycache__
 **/__pycache__/
-sercer/static/main.js
+server/static/main.js
 server/static/vendors~main.js
 
 stats.json
