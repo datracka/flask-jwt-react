@@ -66,16 +66,6 @@ class GoogleJwt:
             print('error', e)
         tokens_json = token_response.json()
 
-        # save user in DB
-        user = User(
-            username="basic", email="test@email.com", token=tokens_json['id_token']
-        )
-        stmt = text("SELECT * FROM Users WHERE Users.token like :x")
-        stmt = stmt.bindparams(
-            bindparam("x", type_='String')
-        )
-        result = conn.execute(stmt, {"x": tokens_json['id_token']})
-        print(result)
 
         # jwt.decode(tokens_json['id_token'], verify=False)
         return tokens_json['id_token']

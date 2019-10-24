@@ -24,6 +24,7 @@ def before_request():
         code = 301
         return redirect(url, code=code)
 
+
 ###### routes ###########
 
 
@@ -56,7 +57,7 @@ def callback():
         return response
     google_jwt = GoogleJwt()
     jwt_token = google_jwt.callback(
-        request.url, request.base_url, request.args)
+        request.url, request.base_url, request.args, User)
     return redirect('/?token=' + jwt_token)
 
 ###### end routes #######
@@ -76,6 +77,7 @@ app.add_url_rule(
 
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
+
 
 # introspection_dict = schema.introspect()
 # Print the schema in the console
