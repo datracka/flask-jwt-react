@@ -57,7 +57,7 @@ def callback():
         return response
     google_jwt = GoogleJwt()
     jwt_token = google_jwt.callback(
-        request.url, request.base_url, request.args, User)
+        request.url, request.base_url, request.args)
     return redirect('/?token=' + jwt_token)
 
 ###### end routes #######
