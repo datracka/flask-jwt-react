@@ -17,7 +17,7 @@ Before starting to see something you need to have installed all this stuff
 - Get client_id and secret_id and copy them into .env
 - Create a DB and update `"SQLALCHEMY_DATABASE_URI"` value with postgress URL (basically you should change `flask_jwt_react` with the name of your DB)
 - run migrations `"flask db init"` `"flask db migrate"` and `"flask db upgrade"` a new `user` table will be created in the selected DB. The resultant `migrations` folder should be added to the repo.
-- Run `" yarn build:dev"` to get a fresh JS build. (optional: `"yarn watch"` to modify the client codebase and see realtime changes)
-- Run `"yarn serve"` to run server localthost
+- Run `"yarn build:dev"` to get a fresh JS build. (optional: `"yarn watch"` to modify the client codebase and see realtime changes)
+- Run `"yarn serve"` to run server localhost
 
 Finally! go to `"https://localhost:5000"` and enjoy it.
