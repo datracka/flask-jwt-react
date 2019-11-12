@@ -48,9 +48,8 @@ def login_callback():
         return redirect('/network-error') 
     
     session['access_token'] = data['access_token']
-    
-    import server.models.user
-    from server.models.user import insert_or_update
+
+    from server.models import insert_or_update
     insert_or_update(data)
 
     return redirect('/?token=' + data['jwt'])

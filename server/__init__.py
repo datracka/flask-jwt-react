@@ -6,7 +6,6 @@ from flask import Flask, render_template, request, redirect, send_from_directory
 from flask.helpers import get_root_path
 from config import BaseConfig
 from server import routes
-
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 
