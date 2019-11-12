@@ -7,7 +7,7 @@ const ProtectedPage = () => {
     <React.Fragment>
       <div>Protected Page</div>
       <div>
-        <a href="#">click to query</a>
+        <a href="#">click to query API</a>
       </div>
     </React.Fragment>
   );

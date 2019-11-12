@@ -1,6 +1,7 @@
 import decodeJWT from "jwt-decode";
 
 export const TOKEN_KEY = "userToken";
+const ISSUER = "https://accounts.google.com";
 
 export function extractToken(response) {
   return response.xhr
@@ -27,9 +28,10 @@ export function getValidToken(key) {
   const token = localStorage.getItem(key);
   try {
     const decodedToken = decodeJWT(token);
+    // eslint-disable-next-line no-unused-vars
     const now = Date.now() / 1000;
-    // Check if token has expired
-    if (now > decodedToken.exp) {
+    if (now > decodedToken.exp || ISSUER !== decodedToken.iss) {
+      console.log("token not longer valid", decodedToken.iss);
       return null;
     }
     // Valid token
@@ -44,7 +46,6 @@ export function getDecodedToken(key) {
   const validToken = getValidToken(key);
   if (validToken) {
     return decodeJWT(validToken);
-  } else {
-    return null;
   }
+  return null;
 }

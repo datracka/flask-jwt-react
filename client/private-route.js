@@ -2,7 +2,7 @@ import React from "react";
 import { Route, useLocation } from "react-router-dom";
 import { withRouter } from "react-router";
 import { getSignInPagePath } from "paths";
-import { TOKEN_KEY, getFromLocalStorage } from "utils/local-storage";
+import { TOKEN_KEY, getValidToken } from "utils/local-storage";
 
 const PrivateRoute = ({
   component: Component,
@@ -13,7 +13,7 @@ const PrivateRoute = ({
   const location = useLocation();
   const [allowRender, setAllowRender] = React.useState(false);
   React.useEffect(() => {
-    const token = getFromLocalStorage(TOKEN_KEY);
+    const token = getValidToken(TOKEN_KEY);
     if (!token && location.pathname === path) {
       window.location.href = getSignInPagePath();
     }

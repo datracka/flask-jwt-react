@@ -4,32 +4,32 @@ import { toObject } from "utils/query-string-helpers";
 import {
   TOKEN_KEY,
   saveInLocalStorage,
-  getFromLocalStorage,
+  getValidToken,
 } from "utils/local-storage";
-import {
-  getProtectedPagePath,
-  getLoginAction,
-  getSignInPagePath,
-} from "paths";
+import { getSignInPagePath, getProtectedPagePath } from "paths";
 
 const SignInPage = () => {
   const location = useLocation();
+  const params = toObject(location.search);
+  const token = getValidToken(TOKEN_KEY);
+  const handleOnClick = () => {
+    window.location.href = getSignInPagePath();
+  };
+
   React.useEffect(() => {
-    const params = toObject(location.search);
-    const token = getFromLocalStorage(TOKEN_KEY);
-    if (params.token || token) {
+    if (params.token) {
       saveInLocalStorage(TOKEN_KEY, params.token);
-      // window.location.href = getProtectedPagePath();
+      window.location.href = getProtectedPagePath();
+    }
+    if (token) {
+      window.location.href = getProtectedPagePath();
     }
   }, []);
-  const onClick = () => {
-    console.log("login", getLoginAction());
-    window.location.href = getLoginAction();
-  };
+
   return (
     <React.Fragment>
-      <button onClick={onClick}>
-        <span>sign in using</span>
+      <button type="button" onClick={handleOnClick}>
+        sign in using google
       </button>
     </React.Fragment>
   );
