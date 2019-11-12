@@ -1,4 +1,4 @@
-from paraqeet import db
+from server import db
 from google.auth import jwt
 from graphql import GraphQLError
 from datetime import datetime

@@ -49,23 +49,8 @@ def login_callback():
     
     session['access_token'] = data['access_token']
     
+    import server.models.user
     from server.models.user import insert_or_update
     insert_or_update(data)
 
     return redirect('/?token=' + data['jwt'])
-
-# secure endpoint! 
-# mauybe after add https://app.clubhouse.io/bravogroupdev/story/1254/allow-download-google-sheet-after-it-is-generated-on-google-drive
-# it can be deleted
-@blueprint.route('/download-influencers')
-def test():
-    # get parameters
-    influencers = get_all_influencers(request.args)
-    return Response(
-            influencers_to_csv(influencers),
-            mimetype="text/csv",
-            headers={
-                "Content-Disposition":
-                "attachment;filename=influencers_list.csv"
-            }
-        )   

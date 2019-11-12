@@ -14,3 +14,4 @@ server/static/vendors~main.js.map
 credentials.json
 cert.pem
 key.pem
+migrations
