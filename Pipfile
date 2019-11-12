@@ -9,18 +9,15 @@ autopep8 = "*"
 [packages]
 flask = "*"
 gunicorn = "*"
-flask-graphql = "*"
 pylint = "*"
 python-dotenv = "*"
 python-dateutil = "*"
-graphene = "*"
 pyopenssl = "*"
 flask-sqlalchemy = "*"
 flask-migrate = "*"
 google-auth = "*"
 requests = "*"
 oauthlib = "*"
-flask-script = "*"
 psycopg2-binary = "*"
 
 [requires]

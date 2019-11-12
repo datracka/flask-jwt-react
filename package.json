@@ -13,7 +13,6 @@
     "build:prod": "NODE_ENV=production webpack --mode production",
     "serve": "export FLASK_ENV=development && flask run --cert=cert.pem --key=key.pem",
     "dev": "webpack-dev-server --inline --color --compress",
-    "heroku-postbuild": "webpack --mode production",
     "flow": "flow",
     "test": "jest",
     "lint:fix": "npx eslint ./client --fix"
@@ -59,12 +58,6 @@
     "webpack-dev-server": "^3.8.2"
   },
   "dependencies": {
-    "@apollo/react-hooks": "^3.1.2",
-    "apollo-cache-inmemory": "^1.6.3",
-    "apollo-client": "^2.6.4",
-    "apollo-link": "^1.2.13",
-    "apollo-link-error": "^1.1.12",
-    "apollo-link-http": "^1.5.16",
     "babel-plugin-module-resolver": "^3.2.0",
     "clsx": "^1.0.4",
     "flow-bin": "^0.109.0",

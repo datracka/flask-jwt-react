@@ -155,37 +155,6 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./client/apollo/store.js":
-/*!********************************!*\
-  !*** ./client/apollo/store.js ***!
-  \********************************/
-/*! exports provided: typeDefs, resolvers */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "typeDefs", function() { return typeDefs; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "resolvers", function() { return resolvers; });
-/* harmony import */ var graphql_tag__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! graphql-tag */ "./node_modules/graphql-tag/src/index.js");
-/* harmony import */ var graphql_tag__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(graphql_tag__WEBPACK_IMPORTED_MODULE_0__);
-function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  extend type Query {\n    isDrawerOpened: Boolean!\n  }\n"]);
-
-  _templateObject = function _templateObject() {
-    return data;
-  };
-
-  return data;
-}
-
-function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
-
-
-var typeDefs = graphql_tag__WEBPACK_IMPORTED_MODULE_0___default()(_templateObject());
-var resolvers = {};
-
-/***/ }),
-
 /***/ "./client/app.js":
 /*!***********************!*\
   !*** ./client/app.js ***!
@@ -197,53 +166,12 @@ var resolvers = {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var apollo_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! apollo-client */ "./node_modules/apollo-client/bundle.esm.js");
-/* harmony import */ var apollo_cache_inmemory__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! apollo-cache-inmemory */ "./node_modules/apollo-cache-inmemory/lib/bundle.esm.js");
-/* harmony import */ var apollo_link_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! apollo-link-http */ "./node_modules/apollo-link-http/lib/bundle.esm.js");
-/* harmony import */ var apollo_link_error__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! apollo-link-error */ "./node_modules/apollo-link-error/lib/bundle.esm.js");
-/* harmony import */ var apollo_link__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! apollo-link */ "./node_modules/apollo-link/lib/bundle.esm.js");
-/* harmony import */ var _apollo_react_hooks__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @apollo/react-hooks */ "./node_modules/@apollo/react-hooks/lib/react-hooks.esm.js");
-/* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./routes */ "./client/routes.js");
-/* harmony import */ var _apollo_store__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./apollo/store */ "./client/apollo/store.js");
+/* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./routes */ "./client/routes.js");
 
 
-
-
-
-
-
-
-
-var cache = new apollo_cache_inmemory__WEBPACK_IMPORTED_MODULE_2__["InMemoryCache"]();
-var client = new apollo_client__WEBPACK_IMPORTED_MODULE_1__["ApolloClient"]({
-  link: apollo_link__WEBPACK_IMPORTED_MODULE_5__["ApolloLink"].from([Object(apollo_link_error__WEBPACK_IMPORTED_MODULE_4__["onError"])(function (_ref) {
-    var graphQLErrors = _ref.graphQLErrors,
-        networkError = _ref.networkError;
-    if (graphQLErrors) graphQLErrors.forEach(function (_ref2) {
-      var message = _ref2.message,
-          locations = _ref2.locations,
-          path = _ref2.path;
-      return console.log("[GraphQL error]: Message: ".concat(message, ", Location: ").concat(locations, ", Path: ").concat(path));
-    });
-    if (networkError) console.log("[Network error]: ".concat(networkError));
-  }), new apollo_link_http__WEBPACK_IMPORTED_MODULE_3__["HttpLink"]({
-    uri: "http://localhost:5000/graphql",
-    credentials: "same-origin"
-  })]),
-  cache: cache,
-  typeDefs: _apollo_store__WEBPACK_IMPORTED_MODULE_8__["typeDefs"],
-  resolvers: _apollo_store__WEBPACK_IMPORTED_MODULE_8__["resolvers"]
-});
-cache.writeData({
-  data: {
-    isDrawerOpened: false
-  }
-});
 
 var App = function App() {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_apollo_react_hooks__WEBPACK_IMPORTED_MODULE_6__["ApolloProvider"], {
-    client: client
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_routes__WEBPACK_IMPORTED_MODULE_7__["default"], null));
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_routes__WEBPACK_IMPORTED_MODULE_1__["default"], null);
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (App);
@@ -380,7 +308,6 @@ __webpack_require__.r(__webpack_exports__);
 
 var ProtectedPage = function ProtectedPage() {
   var history = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["useHistory"])();
-  console.log(history);
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Protected Page"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "#"
   }, "click to query")));
