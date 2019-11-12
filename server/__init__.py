@@ -33,6 +33,6 @@ meta_viewport = {"name": "viewport",
 
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
-from server import models
+import server.models
 
 app.register_blueprint(routes.blueprint)
